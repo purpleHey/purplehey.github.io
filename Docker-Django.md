@@ -19,6 +19,14 @@ Once you have those:
 
 Starts and runs the entire app.
 
-The site name is the name of the Python package for the project.
+docker build makes images.
+docker run takes the image and creates a container: a running instance of the image.
+Docker Engine - builds images and runs containers
 
-ED 25519
+## Key Django piece parts
+Django Apps are python packages.  So 
+First, Django has the concept of a project and an application.  A project is a collection of configuration and apps for a particular website.  An app is an application that does something.
+
+The site name is the name of the Python package for the project.  In my case it was/is polls.  I then created an app called poll.
+
+View are what get rendered on the site.  The project directory has a file called urls.py that maps urls to apps through the use of *include(app.urls)* where app is the name of the app, in my case poll.
