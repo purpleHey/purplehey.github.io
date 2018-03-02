@@ -25,7 +25,8 @@ class Question(models.Model):
 	pub_date = models.DateTimeField('date published')
 	# add str "introspective method"
 	def __str__(self):
-	    return self.question_text```
+	    return self.question_text
+```
 
 Note that type(Question) is <QuerySet>, and therefore you can use db like operations like .filter(), or .get(pk=1) to get individual results.
 
