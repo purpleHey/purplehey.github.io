@@ -1,6 +1,8 @@
 # Django tutorial part 3 Views
 
-Django uses the URL Dispacther and 'URLconfs' to map URL patterns to views.  A pattern is the general form of the URL i.e. /newsarchive/<year>/<month>/
+Django uses the URL Dispacther and 'URLconfs' to map URL patterns to views.  A pattern is the general form of the URL i.e.
+
+> /newsarchive/<year>/<month>/
 
 Inside path function call in urls.py, things in angle brackets (<>) "capture" a variable so it can be used in the view call i.e.
 
