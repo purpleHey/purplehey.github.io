@@ -1,7 +1,7 @@
 import sys
 from datetime import datetime, date
 
-myfile = open("mintTransactions.csv")
+myfile = open("mint03122018.csv")
 # expected output 998666
 def is_number(s):
     try:
@@ -42,12 +42,36 @@ for line in data[1:]:
 categories = [];
 credit = {}
 debit = {}
-budget = {'Gas & Fuel': 400.0}
-startDate = datetime(2018, 2, 1)
-endDate = datetime(2018, 2, 28)
+budget = {
+    'Gas & Fuel'      :  250.0,
+    'Groceries'       : 1000.0,
+    'Mortgage & Rent' : 1200.0,
+    'Check'           : 1250.0,
+    'Auto Payment'    :  410.0,
+    'Auto Insurance'  :  250.0,
+    'Charity'         :  200.0,
+    'Home Insurance'  :  232.0,
+    'Television'      :  188.0,
+    'Home Phone'      :  360.0,
+    'Utilities'       :  260.0,
+    'Doctor'          :  150.0,
+    'room/board'      :  700.0,
+    'Cash & ATM'      : 1250.0,
+    'Travel'          :  400.0
+}
+startDate = datetime(2018, 3, 1)
+endDate = datetime(2018, 3, 28)
 # endDate = datetime.today()
+#
+# Loop over all the transactions and build a category list that has all the unique
+# categories in the transactions, and a dictionary or credits and debits in the 
+# given timeframe. 
+#
+# Note: Currently ignoring categories 'Transfer', 'Check', and 'Credit Card Payment'
+#
+
 for trans in transactions:
-    if trans.transDate > startDate and trans.transDate < endDate:
+    if trans.transDate >= startDate and trans.transDate <= endDate:
         category = trans.category
         if category in categories:
             if trans.type == 'credit':
@@ -58,7 +82,7 @@ for trans in transactions:
                 print("Unknown transaction type: ", trans.type)
         else:
             # print(category)
-            ignoredCategories = ['Transfer', 'Check', 'Credit Card Payment']
+            ignoredCategories = ['Transfer', 'Credit Card Payment']
             if not trans.category in ignoredCategories:
                 if trans.type == 'credit':
                     credit[category] = trans.amount
@@ -82,7 +106,7 @@ budgetTotal = 0.0
 for cat, val in debit.items():
     total += val;
     if cat in budget:
-        budgetTotal += budgetTotal
+        budgetTotal += budget[cat]
         print("{0:20} | {1:>10.2f} | {2:>10.2f}".format(cat, budget[cat], val))
     else:
         print("{0:20} | {1:>10} | {2:>10.2f}".format(cat, 'none', val))
