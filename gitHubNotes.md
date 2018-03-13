@@ -13,5 +13,6 @@ that pushes the changes in the master branch to the remote called origin.  So it
 If you want to know what origin is set to, you can:
 
 Lonestar:purplehey.github.io wes$ git remote -v
+
 origin  git@github.com:purpleHey/purplehey.github.io.git (fetch)
 origin  git@github.com:purpleHey/purplehey.github.io.git (push)
