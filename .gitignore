@@ -1,0 +1,2 @@
+# Don't save .csv files in github
+*.csv
